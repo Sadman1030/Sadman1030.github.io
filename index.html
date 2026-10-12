@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sadman Mubarrat Mahee, urban planner</title>
+<meta name="description" content="Urban and regional planner building spatial and deep learning models for cities and weather in coastal Bangladesh. Published graph neural network paper on Khulna functional zones, and a thesis on rainfall forecasting.">
+<meta name="theme-color" content="#F1F4F2">
+<meta property="og:title" content="Sadman Mubarrat Mahee, urban planner">
+<meta property="og:description" content="Spatial and deep learning models for cities and weather in coastal Bangladesh.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#paper">Skip to content</a>
+
+<header class="bar">
+  <a class="bar-name" href="#top">Sadman Mubarrat Mahee</a>
+  <nav class="bar-nav" aria-label="Sections">
+    <a href="#paper">Paper</a>
+    <a href="#thesis">Thesis</a>
+    <a href="#projects">Projects</a>
+    <a href="#field">Field work</a>
+    <a href="#tools">Tools</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="theme" id="theme" type="button" aria-label="Switch colour theme">Theme</button>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="name">
+  <div class="hero-text">
+    <h1 id="name">Sadman Mubarrat Mahee</h1>
+    <p class="lede">Urban and regional planner. I build spatial and deep learning models for cities and weather on the Bangladesh delta.</p>
+    <p class="hero-note">The map is Khulna City Corporation, divided into five functional zones by the graph neural network in my published paper. Choose a zone, or point at the map, to see what it is made of.</p>
+
+    <div class="zones" id="zones" role="group" aria-label="Functional zones of Khulna City Corporation"></div>
+
+    <div class="zone-panel" id="zonePanel" aria-live="polite"></div>
+
+    <p class="hero-links">
+      <a class="btn btn-solid" id="paperLink" href="#paper">Read about the paper</a>
+      <a class="btn" href="#thesis">See the thesis results</a>
+      <a class="btn" id="cvLink" href="assets/cv.pdf" hidden>Download CV</a>
+    </p>
+  </div>
+
+  <figure class="hero-map" id="map" data-active="">
+    <div class="map-stack">
+      <img class="layer layer-shape" src="assets/zones/shape.png" alt="" width="760" height="1023">
+      <img class="layer layer-zone" data-zone="0" src="assets/zones/zone-c0.png" alt="" width="760" height="1023">
+      <img class="layer layer-zone" data-zone="1" src="assets/zones/zone-c1.png" alt="" width="760" height="1023">
+      <img class="layer layer-zone" data-zone="2" src="assets/zones/zone-c2.png" alt="" width="760" height="1023">
+      <img class="layer layer-zone" data-zone="3" src="assets/zones/zone-c3.png" alt="" width="760" height="1023">
+      <img class="layer layer-zone" data-zone="4" src="assets/zones/zone-c4.png" alt="" width="760" height="1023">
+      <div class="layer layer-outline" role="img" aria-label="Map of Khulna City Corporation coloured by five functional zones"></div>
+    </div>
+    <figcaption>Functional zones of Khulna City Corporation, recoloured from Fig. 8 of the paper (CC BY 4.0). North is up. The city is about 45.65 square kilometres.</figcaption>
+  </figure>
+</section>
+
+<!-- PAPER -->
+<section class="sec" id="paper" aria-labelledby="h-paper">
+  <div class="sec-head">
+    <h2 id="h-paper">Published work</h2>
+    <p>One peer reviewed paper, in a Q1 journal.</p>
+  </div>
+  <div class="sec-body">
+    <article class="paper">
+      <h3>A graph clustering neural network framework for mapping urban functional zones in a fast-evolving urban landscape of Bangladesh</h3>
+      <p class="byline">Mafrid Haydar, Sakib Hosan, Al Hossain Rafi, Md. Kamran Hasan Khan and <strong>Sadman Mubarrat Mahee</strong>. <em>City and Environment Interactions</em> 30, 100401. May 2026. Open access, CC BY 4.0.</p>
+      <p class="paper-links">
+        <a class="btn btn-solid" href="https://doi.org/10.1016/j.cacint.2026.100401" target="_blank" rel="noopener">Read the paper (DOI 10.1016/j.cacint.2026.100401)</a>
+      </p>
+
+      <div class="cols">
+        <div>
+          <h4>The question</h4>
+          <p>Khulna is growing fast and unevenly. Planners need to know which parts of the city do what, but standard clustering on land use alone ignores how places connect. We asked whether a model that reads the road network as a graph could find functional zones more reliably.</p>
+          <h4>The method</h4>
+          <p>Road intersections and points of interest become nodes, and road links become edges. Each node carries values from nighttime lights, land cover and elevation. A two layer graph convolutional network, built in PyTorch Geometric, learns an embedding for every node. K-means on those embeddings gives five zones, with the number of clusters chosen by the elbow method and silhouette score.</p>
+          <h4>The check</h4>
+          <p>The land cover input was validated on a stratified sample of reference points. The zones were then compared with Maxar satellite imagery, the MAP-WORLD basemap and the Detailed Area Plan of the Khulna Development Authority.</p>
+        </div>
+        <div>
+          <h4>Validation scores</h4>
+          <table class="metrics">
+            <caption class="sr">Validation metrics reported in Table 4 of the paper</caption>
+            <tbody>
+              <tr><th scope="row">Overall accuracy</th><td>0.91</td></tr>
+              <tr><th scope="row">Kappa coefficient</th><td>0.82</td></tr>
+              <tr><th scope="row">Silhouette score</th><td>0.50</td></tr>
+              <tr><th scope="row">Davies-Bouldin index</th><td>0.72</td></tr>
+              <tr><th scope="row">RMSE</th><td>0.08</td></tr>
+              <tr><th scope="row">MAE</th><td>0.06</td></tr>
+            </tbody>
+          </table>
+          <h4>What it found</h4>
+          <p>The residential zone and the commercial and residential zone are the most built up, at 49.92 and 45.52 percent. Residential areas largely lack essential services, health facilities most of all, while the business and service zone has them. The zone map above is the model output.</p>
+        </div>
+      </div>
+
+      <div class="thumbs">
+        <button class="thumb" type="button" data-gallery="paper" data-index="0">
+          <img src="assets/img/gcnn-arch.webp" alt="Diagram of the graph clustering neural network: input graph, two hidden graph convolution layers with a ReLU between them, output embedding, and cluster results" loading="lazy">
+          <span>Model structure</span>
+        </button>
+        <button class="thumb" type="button" data-gallery="paper" data-index="1">
+          <img src="assets/img/gcnn-lulc.webp" alt="Land use and land cover map of Khulna City Corporation showing built-up area, water, vegetation and barren land" loading="lazy">
+          <span>Land cover input</span>
+        </button>
+        <button class="thumb" type="button" data-gallery="paper" data-index="2">
+          <img src="assets/img/gcnn-validation.webp" alt="Table comparing each functional zone with satellite imagery, a basemap and the Khulna Development Authority plan" loading="lazy">
+          <span>Checked against imagery and the city plan</span>
+        </button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- THESIS -->
+<section class="sec" id="thesis" aria-labelledby="h-thesis">
+  <div class="sec-head">
+    <h2 id="h-thesis">Thesis: forecasting rain on the delta</h2>
+    <p>Undergraduate thesis, KUET. Supervisor: Mafrid Haydar.</p>
+  </div>
+  <div class="sec-body">
+    <h3 class="thesis-title">A Phase-Separated Spatiotemporal Graph-Transformer Ensemble for Daily to Monthly Rainfall Forecasting in Coastal Bangladesh</h3>
+    <p class="measure">Free reanalysis rainfall is the usual input for flood and water planning in coastal Bangladesh, but it is badly biased there and gauges are sparse. Against five coastal gauges, raw ERA5 daily rainfall scores a coefficient of determination of <strong>minus 0.383</strong>, worse than predicting the average. This thesis builds a forecasting framework that turns that unusable field into a calibrated forecast with honest error bars, using 21 years of data from 1998 to 2018.</p>
+
+    <h3 class="sub">How it works</h3>
+    <div class="stepper" id="stepper">
+      <div class="steps" role="tablist" aria-label="Pipeline stages" id="stepTabs"></div>
+      <div class="step-panel" id="stepPanel" role="tabpanel" aria-live="polite"></div>
+    </div>
+
+    <h3 class="sub">What it achieved</h3>
+    <div class="results" id="results">
+      <div class="result-tabs" role="tablist" aria-label="Result views" id="resultTabs"></div>
+      <div class="result-panel" id="resultPanel" role="tabpanel" aria-live="polite"></div>
+    </div>
+
+    <h3 class="sub">Where it fails</h3>
+    <div class="cols">
+      <p>Skill dropped in the 2018 test year. The diagnosis in the thesis is that the surface pressure input shifted away from its training distribution, confirmed with a Kolmogorov-Smirnov test, and that 2018 had far fewer extreme days. Days above 75 millimetres fell from 71 in 2017 to 8 in 2018, which includes the period around Cyclone Titli.</p>
+      <p>Other limits are stated in the thesis: five gauges in one division, one reanalysis product, one day ahead forecasts, and gauge gaps assumed to be random. I treat the 2018 result as a signal that a deployed version needs input monitoring.</p>
+    </div>
+
+    <h3 class="sub">Figures</h3>
+    <div class="thumbs thumbs-wide" id="thesisThumbs"></div>
+
+    <p class="measure code-note">The full pipeline is 14 Python scripts, from data merging and imputation through ablation, uncertainty and significance tests, built on PyTorch, PyTorch Geometric and pytorch-forecasting. <a id="thesisRepo" href="#contact" hidden>View the code on GitHub</a></p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="sec" id="projects" aria-labelledby="h-projects">
+  <div class="sec-head">
+    <h2 id="h-projects">Projects</h2>
+    <p>Studio, course and research work. Most are team projects, and the team size is shown on each one.</p>
+  </div>
+  <div class="sec-body">
+    <div class="filters" id="filters" role="group" aria-label="Filter projects by topic"></div>
+    <p class="count" id="count" aria-live="polite"></p>
+    <div class="ledger" id="ledger"></div>
+  </div>
+</section>
+
+<!-- FIELD -->
+<section class="sec" id="field" aria-labelledby="h-field">
+  <div class="sec-head">
+    <h2 id="h-field">Field work</h2>
+    <p>Work done on site, with agencies and research partners.</p>
+  </div>
+  <div class="sec-body">
+    <article class="field">
+      <h3>Khulna Development Authority, intern</h3>
+      <p class="when">22 February to 14 March 2026, Khulna</p>
+      <div class="cols">
+        <div>
+          <p>I worked on the design and feasibility check of a CNG and auto-rickshaw stand at Dakbangla Mor, a busy intersection in the central commercial zone where vehicles queue on the roadside with no designated stand.</p>
+          <ul>
+            <li>Digitized road elements and built the GIS database for the road infrastructure.</li>
+            <li>Sketched and mapped road elements to support engineering design and planning documentation.</li>
+            <li>Prepared longitudinal profile and cross section drawings in Autodesk Civil 3D to support road alignment design.</li>
+            <li>Used GIS tools to organize, manage and analyze spatial data through the design and planning phase.</li>
+          </ul>
+          <p>The team report, submitted on 8 March 2026, rests on surveys of traffic volume, vehicle queues and parking, passenger demand and pedestrian movement. It proposes a layout with separate entry and exit points, boarding areas and pedestrian paths.</p>
+        </div>
+        <button class="thumb thumb-tall" type="button" data-gallery="field" data-index="0">
+          <img src="assets/img/kda-layout.webp" alt="Plan drawing of the proposed paratransit stand at Dakbangla Mor with entry, exit, parking bays and pedestrian paths" loading="lazy">
+          <span>Proposed stand layout, from the report</span>
+        </button>
+      </div>
+    </article>
+
+    <article class="field">
+      <h3>Observatory for Salinity in a Coastal Village of Bangladesh</h3>
+      <p class="when">2026, collaborative research initiative of Yale University and MIT, coordinated through KUET</p>
+      <p class="measure">I took part in the field and lab work: collecting soil samples with their geographic coordinates, sorting them, measuring electrical conductivity on site, and testing the collected samples in the lab. I hold a certificate of participation for the project.</p>
+    </article>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="sec" id="tools" aria-labelledby="h-tools">
+  <div class="sec-head">
+    <h2 id="h-tools">Tools</h2>
+    <p>Grouped by the kind of work. Where a project report names the tool, the project is linked.</p>
+  </div>
+  <div class="sec-body">
+    <div class="toolgrid" id="toolgrid"></div>
+    <p class="measure langs">Languages: Bangla (native), English (fluent working proficiency).</p>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="sec" id="education" aria-labelledby="h-edu">
+  <div class="sec-head">
+    <h2 id="h-edu">Education and recognition</h2>
+    <p>Khulna University of Engineering and Technology.</p>
+  </div>
+  <div class="sec-body">
+    <dl class="timeline">
+      <div><dt>February 2022 to August 2026</dt><dd><strong>Bachelor of Urban and Regional Planning</strong>, KUET. CGPA 3.40 out of 4.00.</dd></div>
+      <div><dt>2020</dt><dd>Higher Secondary Certificate (Science), New Govt. Degree College, Rajshahi. GPA 5.00 out of 5.00.</dd></div>
+      <div><dt>2018</dt><dd>Secondary School Certificate (Science), Rajshahi University School. GPA 5.00 out of 5.00.</dd></div>
+    </dl>
+
+    <div class="cols">
+      <div>
+        <h4>Awards</h4>
+        <ul>
+          <li>University Merit Scholarship for outstanding academic performance, 2022 to 2025.</li>
+          <li>Talent pool scholarship, Junior School Certificate examination, 2015.</li>
+        </ul>
+        <h4>Certificates</h4>
+        <ul>
+          <li>Observatory for Salinity in Coastal Village of Bangladesh, project participation, 2026.</li>
+          <li>CASE CRACK, KUET Business and Entrepreneurship Club, participation, 2022.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Activities</h4>
+        <ul>
+          <li>Organizing Secretary, KUET Film Society, 2025 to 2026.</li>
+          <li>Executive Member, KUET Film Society, 2023 to 2024.</li>
+          <li>Class Representative, Department of Urban and Regional Planning, 2022 to 2023.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">Coursework</h3>
+    <p class="measure">63 courses: 45 theory, 16 lab and studio, and 2 for thesis and professional practice. Open a group to see the courses.</p>
+    <div class="courses" id="courses"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec sec-last" id="contact" aria-labelledby="h-contact">
+  <div class="sec-head">
+    <h2 id="h-contact">Contact</h2>
+  </div>
+  <div class="sec-body">
+    <p class="measure big">I am looking for PhD opportunities in urban, environmental and climate science, working with spatial data and machine learning on questions of urban growth, flooding and coastal risk. I am glad to hear from researchers and planners.</p>
+    <p class="contact-links" id="contactLinks"></p>
+    <p class="measure small">References are available on request.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p>Zone map and the paper figures are reproduced from the published article under CC BY 4.0, and the zone map is recoloured. Thesis figures and project text are my own work. Studio reports were written in teams.</p>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Figure viewer">
+  <button class="lb-close" id="lbClose" type="button" aria-label="Close">Close</button>
+  <button class="lb-nav lb-prev" id="lbPrev" type="button" aria-label="Previous figure">Previous</button>
+  <figure>
+    <img id="lbImg" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button class="lb-nav lb-next" id="lbNext" type="button" aria-label="Next figure">Next</button>
+</dialog>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
