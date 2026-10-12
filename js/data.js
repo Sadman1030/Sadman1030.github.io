@@ -4,7 +4,7 @@ window.SITE = {
   config: {
     email: "sadmanmubarrat1030@gmail.com",
     github: "https://github.com/Sadman1030",     // example: "https://github.com/your-username"
-    linkedin: "www.linkedin.com/in/sadman-mubarrat-017b9a249",   // example: "https://www.linkedin.com/in/your-handle"
+    linkedin: "https://www.linkedin.com/in/sadman-mubarrat-017b9a249",   // example: "https://www.linkedin.com/in/your-handle"
     scholar: "https://scholar.google.com/citations?hl=en&user=maGXbrkAAAAJ&view_op=list_works&gmla=AERr9JFIPCosrYRSJNRdLsu6ZH7s4GiSV39b8LHTNALiu9QgMmYfUDHaclxVbUalqSUnwHMUdWiPDEhpQUbxmPAB",    // example: "https://scholar.google.com/citations?user=XXXX"
     thesisRepo: ""  // link to the rainfall pipeline repository, if public
   },
